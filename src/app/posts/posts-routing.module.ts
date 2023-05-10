@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PostsComponent } from './components/posts/posts.component';
-import { AddpostsComponent } from './components/addposts/addposts.component';
-import { EditpostsComponent } from './components/editposts/editposts.component';
+import { PostsListComponent } from './posts/posts-list.component';
+import { AddPostComponent } from './add-post/add-post.component';
+import { EditPostComponent } from './editposts/edit-post.component';
 
 const routes: Routes = [
   {
@@ -12,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'list',
-    component: PostsComponent,
+    component: PostsListComponent,
     // children:[
     //   {path: 'addpost', component: AddpostsComponent},
     //   {path: 'editpost/:id', component: EditpostsComponent}
@@ -20,11 +20,11 @@ const routes: Routes = [
   },
   {
     path: 'addpost',
-    component: AddpostsComponent
+    component: AddPostComponent
   },
   {
     path: 'editpost/:id',
-    component: EditpostsComponent
+    component: EditPostComponent
   }
 ];
 
