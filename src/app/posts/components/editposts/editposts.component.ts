@@ -28,9 +28,9 @@ export class EditpostsComponent implements OnInit, OnDestroy {
     this.isLoading$ = this.store.pipe(select(isLoadingSelector));
     this.error$ = this.store.pipe(select(errorSelector));
     this.route.paramMap.subscribe((params) => {
-      const id = params.get('id');
+      const id:any = params.get('id');
       this.postSubscription = this.store
-      .select(getPostById(id || ''))
+      .select(getPostById(id))
       .subscribe((data:any) => {
         this.post = data;
          this.createForm();

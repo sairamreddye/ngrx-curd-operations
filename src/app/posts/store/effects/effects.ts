@@ -4,6 +4,7 @@ import { catchError, map, mergeMap, of, exhaustMap, switchMap } from 'rxjs';
 import { PostsService } from '../../services/posts.service';
 import * as PostsActions from '../actions/actions';
 import { PostInterface } from '../../types/post.interface'
+import { Update } from '@ngrx/entity';
 
 @Injectable()
 export class PostsEffects {
@@ -43,7 +44,13 @@ export class PostsEffects {
          switchMap((action) => {
              return this.postsService.updatePost(action.post).pipe(
                  map((posts) =>{
-                   return PostsActions.updatePostsSuccess({post: action.post})
+                  const updatedPosts: Update<PostInterface>={
+                    id: action.post.id,
+                    changes:{
+                      ...action.post
+                    },
+                  }
+                   return PostsActions.updatePostsSuccess({post: updatedPosts})
                  }),
                  catchError((error) => 
                  of(PostsActions.updatePostsError({error: error.message}))

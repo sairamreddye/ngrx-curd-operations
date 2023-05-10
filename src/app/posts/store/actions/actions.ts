@@ -1,5 +1,6 @@
 import {createAction, props } from '@ngrx/store';
 import { PostInterface } from '../../types/post.interface';
+import { Update } from '@ngrx/entity';
 
 export const getPosts = createAction('[Posts] Get Posts');
 
@@ -35,7 +36,7 @@ export const updatePost = createAction(
 
 export const updatePostsSuccess = createAction(
     '[Posts] Update Posts Success',
-    props<{post: PostInterface}>()
+    props<{post: Update<PostInterface>}>()
 );
 
 export const updatePostsError = createAction(
